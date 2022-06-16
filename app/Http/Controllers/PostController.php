@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -20,9 +22,14 @@ class PostController extends Controller
 
     public function store()
     {
-        Request::validate([
+        $validated = Request::validate([
             'title' => ['required', 'min:8'],
             'content' => ['required'],
         ]);
+
+        /** @var User $user */
+        $user = Auth::user();
+
+        $post = $user->posts()->create($validated);
     }
 }
