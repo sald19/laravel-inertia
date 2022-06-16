@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,4 +33,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::resource('posts', PostController::class)
+        ->only(['index', 'create', 'store']);
+
+//    Route::get('posts/create', [PostController::class, 'create'])
+//        ->name('posts')
+//        ->middleware('auth');
 });
