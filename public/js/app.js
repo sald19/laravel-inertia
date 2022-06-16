@@ -23845,7 +23845,7 @@ __webpack_require__.r(__webpack_exports__);
       content: ''
     });
 
-    function submit(values, actions) {
+    function submit(_, actions) {
       form.post('/posts', {
         preserveScroll: true,
         onSuccess: function onSuccess() {
@@ -27811,8 +27811,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, null, 8
           /* PROPS */
           , ["modelValue", "class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ErrorMessage"], {
-            name: "title",
-            "class": "mt-2 text-sm text-red-600"
+            "class": "mt-2 text-sm text-red-600",
+            name: "title"
           })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Field"], {
             name: "content"
           }, {

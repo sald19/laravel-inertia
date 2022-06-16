@@ -14,7 +14,7 @@ const form = useForm({
   content: '',
 })
 
-function submit(values, actions) {
+function submit(_, actions) {
   form.post('/posts', {
     preserveScroll: true,
     onSuccess: () => form.reset(),
@@ -64,8 +64,8 @@ function submit(values, actions) {
                     />
                   </div>
                   <ErrorMessage
-                    name="title"
                     class="mt-2 text-sm text-red-600"
+                    name="title"
                   />
                 </div>
 
