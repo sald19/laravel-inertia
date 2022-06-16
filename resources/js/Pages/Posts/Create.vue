@@ -70,7 +70,7 @@ function submit(values, actions) {
                                                 errorMessage
                                                     ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
                                                     : 'border-gray-300',
-                                            ]"
+                                                ]"
                                                 id="content"
                                                 name="content"
                                                 rows="3"
