@@ -16,6 +16,10 @@ class Post extends Model
         'content',
     ];
 
+    protected $cast = [
+        'content' => 'array',
+    ];
+
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tags::class);
