@@ -47,8 +47,9 @@ function submit(_, actions) {
                   <label
                     for="title"
                     class="block text-sm font-medium text-gray-700"
-                    >Email</label
                   >
+                    Title
+                  </label>
                   <div class="mt-1 rounded-md shadow-sm">
                     <Field
                       id="title"
