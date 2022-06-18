@@ -3,6 +3,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { object, string } from 'yup'
+import Editor from '../../Components/Editor.vue'
 
 const schema = object({
   title: string().required().min(3),
@@ -68,6 +69,10 @@ function submit(_, actions) {
                     class="mt-2 text-sm text-red-600"
                     name="title"
                   />
+                </div>
+
+                <div class="col-span-3 sm:col-span-2">
+                  <tiptap />
                 </div>
 
                 <div>
