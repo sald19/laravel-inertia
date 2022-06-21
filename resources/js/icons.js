@@ -3,7 +3,9 @@ import {
   faBold,
   faHeading,
   faItalic,
+  faListOl,
+  faListUl,
   faStrikethrough,
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faBold, faItalic, faStrikethrough, faHeading)
+library.add(faBold, faHeading, faItalic, faListOl, faListUl, faStrikethrough)

@@ -17,5 +17,7 @@ defineProps({
     ]"
     :title="title"
     @click="action"
-  ></button>
+  >
+    <font-awesome-icon :icon="['fa-solid', icon]" />
+  </button>
 </template>

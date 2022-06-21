@@ -24,6 +24,32 @@ const items = [
     action: () => props.editor.chain().focus().toggleStrike().run(),
     isActive: () => props.editor.isActive('strike'),
   },
+  {
+    icon: 'heading',
+    title: 'Heading 1',
+    action: () =>
+      props.editor.chain().focus().toggleHeading({ level: 1 }).run(),
+    isActive: () => props.editor.isActive('heading', { level: 1 }),
+  },
+  {
+    icon: 'heading',
+    title: 'Heading 2',
+    action: () =>
+      props.editor.chain().focus().toggleHeading({ level: 2 }).run(),
+    isActive: () => props.editor.isActive('heading', { level: 2 }),
+  },
+  {
+    icon: 'list-ul',
+    title: 'Bullet List',
+    action: () => props.editor.chain().focus().toggleBulletList().run(),
+    isActive: () => props.editor.isActive('bulletList'),
+  },
+  {
+    icon: 'list-ol',
+    title: 'Ordered List',
+    action: () => props.editor.chain().focus().toggleOrderedList().run(),
+    isActive: () => props.editor.isActive('orderedList'),
+  },
 ]
 </script>
 
