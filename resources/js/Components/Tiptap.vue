@@ -11,7 +11,7 @@ const editor = useEditor({
 
 <template>
   <div>
-    <div v-if="editor">
+    <div v-if="editor" class="prose lg:prose-xl">
       <menu-bar :editor="editor" />
       <editor-content :editor="editor" />
     </div>
