@@ -25,6 +25,12 @@ const items = [
     isActive: () => props.editor.isActive('strike'),
   },
   {
+    icon: 'highlighter',
+    title: 'Highlight',
+    action: () => props.editor.chain().focus().toggleHighlight().run(),
+    isActive: () => props.editor.isActive('highlight'),
+  },
+  {
     icon: 'heading',
     title: 'Heading 1',
     action: () =>

@@ -34,6 +34,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@headlessui/vue": "^1.6.4",
     "@heroicons/vue": "^1.0.6",
+    "@tiptap/extension-highlight": "^2.0.0-beta.35",
     "@tiptap/starter-kit": "^2.0.0-beta.188",
     "@tiptap/vue-3": "^2.0.0-beta.94",
     "vee-validate": "^4.5.11",
