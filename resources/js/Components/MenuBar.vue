@@ -56,6 +56,12 @@ const items = [
     action: () => props.editor.chain().focus().toggleOrderedList().run(),
     isActive: () => props.editor.isActive('orderedList'),
   },
+  {
+    icon: 'quote-right',
+    title: 'Blockquote',
+    action: () => props.editor.chain().focus().toggleBlockquote().run(),
+    isActive: () => props.editor.isActive('blockquote'),
+  },
 ]
 </script>
 
