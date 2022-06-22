@@ -5,14 +5,10 @@ import { Form, Field, ErrorMessage } from 'vee-validate'
 import { array, object, string } from 'yup'
 import Tiptap from '../../Components/Tiptap.vue'
 
-import { useStorage } from '@/Composables/useStorage.js'
-
-let title = useStorage('title')
-
 const schema = object({
   content: object({
-    type: string(),
     content: array(),
+    type: string(),
   }),
   title: string().required().min(3),
 })
