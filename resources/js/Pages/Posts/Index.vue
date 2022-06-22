@@ -3,6 +3,8 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 import { Link } from '@inertiajs/inertia-vue3'
 import { formatDistanceToNow, isToday, format } from 'date-fns'
 
+import TiptapRenderer from '@/Components/TiptapRenderer.vue'
+
 defineProps({ posts: Array })
 
 function formatPostDate(date) {
@@ -61,7 +63,7 @@ function formatPostDate(date) {
               Published on {{ formatPostDate(post.created_at) }}
             </time>
             <p class="mb-4 text-base font-normal text-gray-500">
-              {{ post.content }}
+              <TiptapRenderer :content="post.content" />
             </p>
           </Link>
         </div>
