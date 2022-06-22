@@ -81,9 +81,9 @@ function submit(_, actions) {
                   >
                     Content
                   </label>
-                  <Field v-slot="{ field, errorMessage }" name="content">
+                  <Field v-slot="{ errorMessage }" name="content">
                     <Tiptap
-                      v-bind="field"
+                      v-model="form.content"
                       :class="[
                         'focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border rounded-md',
                         errorMessage
