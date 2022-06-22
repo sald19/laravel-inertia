@@ -5,13 +5,25 @@ import StarterKit from '@tiptap/starter-kit'
 
 import MenuBar from '@/Components/MenuBar.vue'
 
+const props = defineProps({
+  modelValue: Object,
+})
+
+const emit = defineEmits(['update:modelValue'])
+
 const editor = useEditor({
-  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+  content: props.modelValue,
   editorProps: {
     attributes: {
       class:
         'prose prose-sm sm:prose focus:outline-none min-h-full w-full min-w-full p-2',
     },
+  },
+  onUpdate: ({ editor }) => {
+    emit('update:modelValue', editor.getJSON())
+
+    console.log('editor', editor.getHTML())
+    console.log('empty', editor.isEmpty)
   },
   extensions: [Highlight, StarterKit],
 })

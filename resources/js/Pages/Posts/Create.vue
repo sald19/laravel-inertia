@@ -2,17 +2,23 @@
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import { object, string } from 'yup'
+import { array, object, string } from 'yup'
 import Tiptap from '../../Components/Tiptap.vue'
 
 const schema = object({
+  content: object({
+    type: string(),
+    content: array(),
+  }),
   title: string().required().min(3),
-  content: string().required(),
 })
 
 const form = useForm({
+  content: {
+    type: 'doc',
+    content: [{ type: 'paragraph', content: [] }],
+  },
   title: '',
-  content: '',
 })
 
 function submit(_, actions) {
@@ -72,7 +78,17 @@ function submit(_, actions) {
                 </div>
 
                 <div class="col-span-3 sm:col-span-2">
-                  <Tiptap />
+                  <label
+                    for="content"
+                    class="block text-sm font-medium text-gray-700"
+                  >
+                    Content
+                  </label>
+                  <Tiptap v-model="form.content" />
+                  <ErrorMessage
+                    class="mt-2 text-sm text-red-600"
+                    name="content"
+                  />
                 </div>
 
                 <div>
