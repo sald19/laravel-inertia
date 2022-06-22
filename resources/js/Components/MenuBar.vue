@@ -66,7 +66,7 @@ const items = [
 </script>
 
 <template>
-  <div class="flex justify-around border-b border-gray-300 py-1">
+  <div class="flex justify-start border-b border-gray-300 py-1">
     <template v-for="(item, index) in items">
       <div
         v-if="item.type === 'divider'"
