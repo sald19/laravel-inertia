@@ -37,6 +37,7 @@
     "@tiptap/extension-highlight": "^2.0.0-beta.35",
     "@tiptap/starter-kit": "^2.0.0-beta.188",
     "@tiptap/vue-3": "^2.0.0-beta.94",
+    "date-fns": "^2.28.0",
     "vee-validate": "^4.5.11",
     "yup": "^0.32.11"
   }

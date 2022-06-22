@@ -1,8 +1,15 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { Link } from '@inertiajs/inertia-vue3'
+import { formatDistanceToNow, isToday, format } from 'date-fns'
 
 defineProps({ posts: Array })
+
+function formatPostDate(date) {
+  date = new Date(date)
+
+  return isToday(date) ? formatDistanceToNow(date) : format(date, 'MMMM d, y')
+}
 </script>
 
 <template>
@@ -48,9 +55,11 @@ defineProps({ posts: Array })
               </span>
             </h3>
             <time
+              :datetime="post.created_at"
               class="block mb-2 text-sm font-normal leading-none text-gray-400"
-              >Released on January 13th, 2022</time
             >
+              Published on {{ formatPostDate(post.created_at) }}
+            </time>
             <p class="mb-4 text-base font-normal text-gray-500">
               {{ post.content }}
             </p>
