@@ -16,7 +16,7 @@ class Post extends Model
         'content',
     ];
 
-    protected $cast = [
+    protected $casts = [
         'content' => 'array',
     ];
 
