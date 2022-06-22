@@ -13,7 +13,9 @@ class PostController extends Controller
 {
     public function index(): Response
     {
-        $posts = Auth::user()->posts;
+        /** @var User $user */
+        $user = Auth::user();
+        $posts = $user->posts()->latest()->get();
 
         return Inertia::render('Posts/Index', ['posts' => $posts]);
     }
