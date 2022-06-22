@@ -6,6 +6,7 @@ import {
   faItalic,
   faListOl,
   faListUl,
+  faQuoteRight,
   faStrikethrough,
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -16,5 +17,6 @@ library.add(
   faItalic,
   faListOl,
   faListUl,
+  faQuoteRight,
   faStrikethrough
 )
