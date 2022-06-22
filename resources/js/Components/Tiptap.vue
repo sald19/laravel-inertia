@@ -19,13 +19,10 @@ const editor = useEditor({
         'prose prose-sm sm:prose focus:outline-none min-h-full w-full min-w-full p-2',
     },
   },
+  extensions: [Highlight, StarterKit],
   onUpdate: ({ editor }) => {
     emit('update:modelValue', editor.getJSON())
-
-    console.log('editor', editor.getHTML())
-    console.log('empty', editor.isEmpty)
   },
-  extensions: [Highlight, StarterKit],
 })
 </script>
 

@@ -5,6 +5,10 @@ import { Form, Field, ErrorMessage } from 'vee-validate'
 import { array, object, string } from 'yup'
 import Tiptap from '../../Components/Tiptap.vue'
 
+import { useStorage } from '@/Composables/useStorage.js'
+
+let title = useStorage('title')
+
 const schema = object({
   content: object({
     type: string(),
@@ -14,10 +18,7 @@ const schema = object({
 })
 
 const form = useForm({
-  content: {
-    type: 'doc',
-    content: [{ type: 'paragraph', content: [] }],
-  },
+  content: {},
   title: '',
 })
 
@@ -84,41 +85,20 @@ function submit(_, actions) {
                   >
                     Content
                   </label>
-                  <Tiptap v-model="form.content" />
+                  <Field v-slot="{ field, errorMessage }" name="content">
+                    <Tiptap
+                      v-bind="field"
+                      :class="[
+                        'focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border rounded-md',
+                        errorMessage
+                          ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
+                          : 'border-gray-300',
+                      ]"
+                    />
+                  </Field>
                   <ErrorMessage
                     class="mt-2 text-sm text-red-600"
                     name="content"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    for="content"
-                    class="block text-sm font-medium text-gray-700"
-                  >
-                    Content
-                  </label>
-
-                  <div class="mt-1 shadow-sm rounded-md">
-                    <Field v-slot="{ field, errorMessage }" name="content">
-                      <textarea
-                        id="content"
-                        v-bind="field"
-                        v-model="form.content"
-                        :class="[
-                          'focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border rounded-md',
-                          errorMessage
-                            ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300',
-                        ]"
-                        name="content"
-                        rows="3"
-                      />
-                    </Field>
-                  </div>
-                  <ErrorMessage
-                    name="content"
-                    class="mt-2 text-sm text-red-600"
                   />
                 </div>
               </div>
