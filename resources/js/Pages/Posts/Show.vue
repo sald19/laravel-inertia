@@ -22,9 +22,7 @@ const humaneDate = computed(() => {
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Post</h2>
     </template>
 
-    <div
-      class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 rounded-xl overflow-auto"
-    >
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 rounded-xl">
       <div
         class="h-60 w-full bg-cover bg-center"
         style="
@@ -48,6 +46,9 @@ const humaneDate = computed(() => {
 </template>
 
 <style scoped>
+.content {
+  height: 3000px;
+}
 .content ::v-deep(p) {
   @apply mt-4 leading-7 text-slate-500;
 }
