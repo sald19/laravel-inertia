@@ -18,6 +18,7 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+        @routes
         @inertia
 
         @env ('local')
