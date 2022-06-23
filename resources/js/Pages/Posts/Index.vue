@@ -27,7 +27,7 @@ function formatPostDate(date) {
             v-for="post in posts"
             :key="post.id"
             as="article"
-            href="posts/create"
+            :href="route('posts.show', post.id)"
             class="mb-10 ml-8 cursor-pointer"
           >
             <span

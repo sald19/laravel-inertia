@@ -35,7 +35,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::resource('posts', PostController::class)
-        ->only(['index', 'create', 'store']);
+        ->only(['create', 'index' , 'show', 'store']);
 
 //    Route::get('posts/create', [PostController::class, 'create'])
 //        ->name('posts')

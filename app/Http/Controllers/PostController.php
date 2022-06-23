@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,6 +12,11 @@ use Inertia\Response;
 
 class PostController extends Controller
 {
+    public function create(): Response
+    {
+        return Inertia::render('Posts/Create', []);
+    }
+
     public function index(): Response
     {
         /** @var User $user */
@@ -20,9 +26,9 @@ class PostController extends Controller
         return Inertia::render('Posts/Index', ['posts' => $posts]);
     }
 
-    public function create(): Response
+    public function show(Post $post): Response
     {
-        return Inertia::render('Posts/Create', []);
+        return Inertia::render('Posts/Show', ['post' => $post]);
     }
 
     public function store()
