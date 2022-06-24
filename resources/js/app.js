@@ -19,16 +19,11 @@ createInertiaApp({
       apiKey: process.env.MIX_BUGSNAG_API_KEY,
       appVersion: process.env.MIX_BUGSNAG_APP_VERSION,
       plugins: [new BugsnagPluginVue()],
-      onError: function (event) {
+      onError: (event) => {
         const user = props.initialPage.props.auth.user
         if (user) {
           event.setUser(user.id, user.email, user.name)
         }
-
-        event.addMetadata('company', {
-          name: 'Acme Co.',
-          country: 'uk',
-        })
       },
     })
 
