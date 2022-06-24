@@ -1,9 +1,19 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
-import { computed } from 'vue'
+import { computed, handleError } from 'vue'
 import { formatDistanceToNow, isToday, format } from 'date-fns'
+import { usePage } from '@inertiajs/inertia-vue3'
 
 import TiptapRenderer from '@/Components/TiptapRenderer.vue'
+
+const user = computed(() => usePage().props.value.auth.user)
+console.log({ user })
+
+function errorReport() {
+  const test = new Date().toTimeString()
+
+  handleError(new Error(`Test error ${test}`))
+}
 
 const props = defineProps({
   post: Object,
@@ -20,6 +30,7 @@ const humaneDate = computed(() => {
   <AppLayout title="Post">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Post</h2>
+      <button @click="errorReport">click</button>
     </template>
 
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 rounded-xl">
