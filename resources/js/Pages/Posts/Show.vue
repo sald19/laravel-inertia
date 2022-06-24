@@ -1,18 +1,12 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
-import { computed, handleError } from 'vue'
+import { computed } from 'vue'
 import { formatDistanceToNow, isToday, format } from 'date-fns'
-import { usePage } from '@inertiajs/inertia-vue3'
 
 import TiptapRenderer from '@/Components/TiptapRenderer.vue'
 
-const user = computed(() => usePage().props.value.auth.user)
-console.log({ user })
-
 function errorReport() {
-  const test = new Date().toTimeString()
-
-  handleError(new Error(`Test error ${test}`))
+  new Error(`Test error ${test}`)
 }
 
 const props = defineProps({
