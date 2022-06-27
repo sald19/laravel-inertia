@@ -24,7 +24,6 @@ const humaneDate = computed(() => {
   <AppLayout title="Post">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Post</h2>
-      <button @click="errorReport">click</button>
     </template>
 
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 rounded-xl">
@@ -40,6 +39,8 @@ const humaneDate = computed(() => {
         >
           {{ post.title }}
         </div>
+        <button @click="errorReport">click</button>
+
         <div class="mt-1 font-medium text-sm text-slate-500">
           {{ humaneDate }} · 4 min read
         </div>

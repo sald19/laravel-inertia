@@ -17,6 +17,7 @@ Bugsnag.start({
   appVersion: process.env.MIX_BUGSNAG_APP_VERSION,
   plugins: [new BugsnagPluginVue()],
   onError: (event) => {
+    console.log(event)
     console.log('usePage().props', usePage().props)
 
     const user = usePage().props.value.auth.user
