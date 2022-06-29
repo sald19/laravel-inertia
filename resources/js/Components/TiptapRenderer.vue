@@ -7,8 +7,6 @@ const props = defineProps({
   content: Object,
 })
 
-console.log(furulla2)
-
 const html = generateHTML(props.content, [Highlight, StarterKit])
 </script>
 
