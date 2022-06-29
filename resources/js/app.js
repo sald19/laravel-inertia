@@ -2,6 +2,7 @@ import './bootstrap'
 import './icons'
 
 import { createApp, h } from 'vue'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -13,8 +14,8 @@ const appName =
   window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel'
 
 Bugsnag.start({
-  apiKey: process.env.MIX_BUGSNAG_API_KEY,
-  appVersion: process.env.MIX_BUGSNAG_APP_VERSION,
+  apiKey: import.meta.env.VITE_BUGSNAG_API_KEY,
+  appVersion: import.meta.env.VITE_BUGSNAG_APP_VERSION,
   plugins: [new BugsnagPluginVue()],
   onError: (event) => {
     console.log(event)
@@ -31,7 +32,11 @@ const bugsnagVue = Bugsnag.getPlugin('vue')
 
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
-  resolve: (name) => require(`./Pages/${name}.vue`),
+  resolve: (name) =>
+    resolvePageComponent(
+      `./Pages/${name}.vue`,
+      import.meta.glob('./Pages/**/*.vue')
+    ),
   setup({ el, app, props, plugin }) {
     const vueApp = createApp({ render: () => h(app, props) })
       .use(plugin)
