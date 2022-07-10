@@ -21,7 +21,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->text(),
-            'content' =>  '{"type": "doc", "content": [{"type": "paragraph", "content": [{"text": "furulla", "type": "text"}]}]}',
+            'content' => '{"type": "doc", "content": [{"type": "paragraph", "content": [{"text": "furulla", "type": "text"}]}]}',
         ];
     }
 }
