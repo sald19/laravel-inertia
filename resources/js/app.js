@@ -3,12 +3,11 @@ import './icons'
 
 import { createApp, h } from 'vue'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import { createInertiaApp, usePage } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Bugsnag from '@bugsnag/js'
 import BugsnagPluginVue from '@bugsnag/plugin-vue'
-import { usePage } from '@inertiajs/inertia-vue3'
 
 const appName =
   window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel'
@@ -18,10 +17,8 @@ Bugsnag.start({
   appVersion: import.meta.env.VITE_BUGSNAG_APP_VERSION,
   plugins: [new BugsnagPluginVue()],
   onError: (event) => {
-    console.log(event)
-    console.log('usePage().props', usePage().props)
-
     const user = usePage().props.value.auth.user
+    console.log('user', user)
     if (user) {
       event.setUser(user.id, user.email, user.name)
     }
