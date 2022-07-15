@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class PostController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-        $posts = $user->posts()->latest()->get();
+        $posts = PostResource::collection($user->posts()->latest()->get());
 
         return Inertia::render('Posts/Index', ['posts' => $posts]);
     }
