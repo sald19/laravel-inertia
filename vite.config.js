@@ -7,8 +7,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 export default defineConfig((command, mode) => {
   const env = loadEnv(mode, process.cwd(), '')
 
-  console.log('env', env)
-
   return {
     plugins: [
       laravel(['resources/css/app.css', 'resources/js/app.js']),
