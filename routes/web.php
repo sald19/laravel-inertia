@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,6 +16,12 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/email', function () {
+    $user = \Illuminate\Support\Facades\Auth::user();
+
+    $user->notify(new InvoicePaid());
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
