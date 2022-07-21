@@ -22,7 +22,8 @@ class PostController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-        $posts = PostResource::collection($user->posts()->latest()->get());
+        $posts = $user->posts()->with('user')->latest()->get();
+        $posts = PostResource::collection($posts);
 
         return Inertia::render('Posts/Index', ['posts' => $posts]);
     }
