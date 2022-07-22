@@ -23,6 +23,10 @@ Route::get('/email', function () {
     $user->notify(new InvoicePaid());
 });
 
+Route::get('/search', function () {
+    return \App\Models\Post::search('test')->where('user_id', 1)->get();
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
