@@ -22,11 +22,6 @@ class Post extends Model
         'content' => 'array',
     ];
 
-    public function searchableAs(): string
-    {
-        return 'posts_index';
-    }
-
     public function toSearchableArray(): array
     {
         return $this->only(['user_id', 'title', 'content']);
