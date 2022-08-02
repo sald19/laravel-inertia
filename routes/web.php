@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -18,13 +19,21 @@ use Inertia\Inertia;
 */
 
 Route::get('/email', function () {
+    /** @var User $user */
     $user = \Illuminate\Support\Facades\Auth::user();
 
     $user->notify(new InvoicePaid());
 });
 
 Route::get('/search', function () {
-    return \App\Models\Post::search('test')->where('user_id', 1)->get();
+    try {
+        $client = new MeiliSearch\Client("http://meilisearch:7700", "masterKey");
+        $client->index('products')->updateFilterableAttributes(['team_id']);
+
+        return \App\Models\Post::search('test')->where('user_id', 1)->get();
+    } catch (\Throwable $th) {
+        dump($th->getTraceAsString());
+    }
 });
 
 Route::get('/', function () {
