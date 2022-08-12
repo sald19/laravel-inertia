@@ -57,7 +57,15 @@ Route::middleware([
     Route::resource('posts', PostController::class)
         ->only(['create', 'index', 'show', 'store']);
 
-//    Route::get('posts/create', [PostController::class, 'create'])
-//        ->name('posts')
-//        ->middleware('auth');
+    Route::get('/search', function () {
+        return new JsonResponse(
+            data: Product::search(
+                query: $request->get('query') ?? '',
+            )
+                ->query(fn ($query) => $query->with('media', 'team', 'team.customer'))
+                ->where('team_id', $request->user()->currentTeam->id)
+                ->paginate(5),
+            status: HttpResponse::HTTP_OK,
+        );
+    });
 });
