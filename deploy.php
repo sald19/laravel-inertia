@@ -13,7 +13,7 @@ add('shared_dirs', []);
 add('writable_dirs', []);
 
 // Hosts
-host('157.245.255.11')
+host('laravel-inertia')
     ->set('remote_user', 'deployer')
     ->set('deploy_path', '~/apps');
 
