@@ -6,7 +6,7 @@ require 'recipe/laravel.php';
 
 // Config
 
-set('repository', '');
+//set('repository', 'git@github.com:sald19/laravel-inertia.git');
 
 add('shared_files', []);
 add('shared_dirs', []);
