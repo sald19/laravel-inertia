@@ -27,8 +27,8 @@ task('deploy:build', function () {
     run('npm run build');
 });
 
-after('deploy:update_code', 'install_packages');
-after('deploy:install_packages', 'build');
+after('deploy:update_code', 'deploy:install_packages');
+after('deploy:install_packages', 'deploy:build');
 
 // Hooks
 
