@@ -20,7 +20,7 @@ host('157.245.255.11')
 task('build', function () {
     cd('{{release_path}}');
     run('npm install');
-    run('npm run prod');
+    run('npm run build');
 });
 
 after('deploy:update_code', 'build');
