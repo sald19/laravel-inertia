@@ -17,12 +17,12 @@ host('157.245.255.11')
     ->set('remote_user', 'deployer')
     ->set('deploy_path', '~/apps');
 
-task('install_packages', function () {
+task('deploy:install_packages', function () {
     cd('{{release_path}}');
     run('npm install');
 });
 
-task('build', function () {
+task('deploy:build', function () {
     cd('{{release_path}}');
     run('npm run build');
 });
