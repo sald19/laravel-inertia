@@ -17,6 +17,14 @@ host('157.245.255.11')
     ->set('remote_user', 'deployer')
     ->set('deploy_path', '~/apps');
 
+task('build', function () {
+    cd('{{release_path}}');
+    run('npm install');
+    run('npm run prod');
+});
+
+after('deploy:update_code', 'build');
+
 // Hooks
 
 after('deploy:failed', 'deploy:unlock');
