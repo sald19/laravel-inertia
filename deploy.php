@@ -19,12 +19,12 @@ host('157.245.255.11')
 
 task('deploy:install_packages', function () {
     cd('{{release_path}}');
-    run('npm install');
+    run('yarn install');
 });
 
 task('deploy:build', function () {
     cd('{{release_path}}');
-    run('npm run build');
+    run('yarn build');
 });
 
 after('deploy:update_code', 'deploy:install_packages');
