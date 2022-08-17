@@ -3,6 +3,8 @@
 namespace Deployer;
 
 require 'recipe/laravel.php';
+require 'contrib/yarn.php';
+
 
 // Config
 
@@ -27,7 +29,7 @@ task('deploy:build', function () {
     run('yarn build');
 });
 
-after('deploy:update_code', 'deploy:install_packages');
+after('deploy:update_code', 'yarn:install');
 after('deploy:install_packages', 'deploy:build');
 
 // Hooks
