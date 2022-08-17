@@ -24,13 +24,13 @@ task('deploy:install_packages', function () {
     run('yarn install');
 });
 
-task('deploy:build', function () {
+task('yarn:build', function () {
     cd('{{release_path}}');
     run('yarn build');
 });
 
 after('deploy:update_code', 'yarn:install');
-after('deploy:install_packages', 'yarn:install');
+after('yarn:install', 'yarn:build');
 
 // Hooks
 
