@@ -25,7 +25,7 @@ task('deploy:install_packages', function () {
 });
 
 task('yarn:build', function () {
-    cd('{{release_path}}');
+    cd('{{release_or_current_path}}');
     run('yarn build');
 });
 
