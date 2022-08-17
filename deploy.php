@@ -25,11 +25,10 @@ task('deploy:install_packages', function () {
 });
 
 task('yarn:build', function () {
-    cd('{{release_or_current_path}}');
-    run('yarn build');
+    run("cd {{release_path}} && {{bin/yarn}} build");
 });
 
-after('deploy:update_code', 'yarn:install');
+after('deploy:shared', 'yarn:install');
 after('yarn:install', 'yarn:build');
 
 // Hooks
