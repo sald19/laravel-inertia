@@ -30,7 +30,7 @@ task('deploy:build', function () {
 });
 
 after('deploy:update_code', 'yarn:install');
-after('deploy:install_packages', 'deploy:build');
+after('deploy:install_packages', 'yarn:install');
 
 // Hooks
 
