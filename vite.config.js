@@ -46,11 +46,11 @@ export default defineConfig((command, mode) => {
 
     devtool: 'hidden-source-map',
 
-    // output: {
-    //   chunkFilename: 'js/components/[name].js?id=[contenthash]',
-    // },
     output: {
-      chunkFilename: 'js/components/[name].js',
+      chunkFilename: 'js/components/[name].js?id=[contenthash]',
     },
+    // output: {
+    //   chunkFilename: 'js/components/[name].js',
+    // },
   }
 })
