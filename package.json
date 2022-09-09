@@ -31,8 +31,8 @@
     "vue-loader": "^17.0.0"
   },
   "dependencies": {
-    "@bugsnag/js": "^7.17.0",
-    "@bugsnag/plugin-vue": "^7.17.0",
+    "@bugsnag/js": "^7.17.4",
+    "@bugsnag/plugin-vue": "^7.17.4",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
