@@ -6,6 +6,8 @@ import { BugsnagSourceMapUploaderPlugin } from 'vite-plugin-bugsnag'
 
 export default defineConfig((command, mode) => {
   const env = loadEnv(mode, process.cwd(), '')
+  const isProd = env.APP_ENV === 'production'
+  console.log({ isProd })
 
   return {
     plugins: [
@@ -42,10 +44,13 @@ export default defineConfig((command, mode) => {
       },
     },
 
-    // devtool: 'hidden-source-map',
+    devtool: 'hidden-source-map',
 
     // output: {
     //   chunkFilename: 'js/components/[name].js?id=[contenthash]',
     // },
+    output: {
+      chunkFilename: 'js/components/[name].js',
+    },
   }
 })
