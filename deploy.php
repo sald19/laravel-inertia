@@ -19,11 +19,6 @@ host('157.245.255.11')
     ->set('remote_user', 'deployer')
     ->set('deploy_path', '~/apps');
 
-task('deploy:install_packages', function () {
-    cd('{{release_path}}');
-    run('yarn install');
-});
-
 task('yarn:build', function () {
     run("cd {{release_path}} && {{bin/yarn}} build");
 });
