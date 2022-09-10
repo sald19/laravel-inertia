@@ -11,7 +11,10 @@ export default defineConfig((command, mode) => {
 
   return {
     plugins: [
-      laravel(['resources/css/app.css', 'resources/js/app.js']),
+      laravel({
+        input: ['resources/css/app.css', 'resources/js/app.js'],
+        refresh: true,
+      }),
       vue({
         template: {
           transformAssetUrls: {
