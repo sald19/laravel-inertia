@@ -7,7 +7,6 @@ import { BugsnagSourceMapUploaderPlugin } from 'vite-plugin-bugsnag'
 export default defineConfig((command, mode) => {
   const env = loadEnv(mode, process.cwd(), '')
   const isProd = env.APP_ENV === 'production'
-  console.log({ isProd })
 
   return {
     plugins: [
