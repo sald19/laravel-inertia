@@ -33,11 +33,15 @@ export default defineConfig((command, mode) => {
         },
       }),
 
-      BugsnagSourceMapUploaderPlugin({
-        apiKey: env.VITE_BUGSNAG_API_KEY,
-        appVersion: env.VITE_BUGSNAG_APP_VERSION,
-        overwrite: true,
-      }),
+      ...(isProd
+        ? [
+            BugsnagSourceMapUploaderPlugin({
+              apiKey: env.VITE_BUGSNAG_API_KEY,
+              appVersion: env.VITE_BUGSNAG_APP_VERSION,
+              overwrite: true,
+            }),
+          ]
+        : []),
     ],
 
     resolve: {
