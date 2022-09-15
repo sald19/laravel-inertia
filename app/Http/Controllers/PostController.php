@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PostResource;
+use App\Models\CouponCodes;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -44,6 +47,12 @@ class PostController extends Controller
         $user = Auth::user();
 
         $user->posts()->create($validated);
+
+        CouponCodes::create([
+            'code' => 'FURULLA',
+            'start_at' => '2022-09-12T16:58:27.000000Z',
+            'end_At' => null,
+        ]);
 
         return Redirect::route('posts.index')->with('success', 'Post created.');
     }
