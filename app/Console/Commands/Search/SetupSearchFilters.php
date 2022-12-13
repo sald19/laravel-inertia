@@ -34,9 +34,11 @@ class SetupSearchFilters extends Command
         $index = $this->argument(
             key: 'index',
         );
-        $model = match($index) {
+
+        $model = match ($index) {
             'posts_index' => Post::class,
         };
+
         try {
             $this->info(
                 string: "Updating filterable attributes for [$model] on index [$index]",
