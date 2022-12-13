@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\OrderController;
 use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
@@ -17,6 +18,10 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Route::get('/test', function () {
+//
+//});
 
 Route::get('/email', function () {
     /** @var User $user */
@@ -56,4 +61,7 @@ Route::middleware([
 
     Route::resource('posts', PostController::class)
         ->only(['create', 'index', 'show', 'store']);
+
+    Route::resource('orders', OrderController::class)
+        ->only(['create', 'store']);
 });
