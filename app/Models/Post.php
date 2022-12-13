@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,11 +17,26 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
+        'user_id',
+        'settings',
     ];
 
     protected $casts = [
         'content' => 'array',
+        'settings' => 'array',
     ];
+
+    protected function settings(): Attribute
+    {
+        return Attribute::make(
+            get: function($value) {
+                logger(['get-value' => $value, 'empty' => empty($value)]);
+
+                $value =  $value ?? '{"document": "default-desde-el-set"}';
+                return json_decode($value);
+            },
+        );
+    }
 
     public function toSearchableArray(): array
     {
