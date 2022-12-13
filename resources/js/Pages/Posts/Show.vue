@@ -5,7 +5,7 @@ import { formatDistanceToNow, isToday, format } from 'date-fns'
 
 import TiptapRenderer from '@/Components/TiptapRenderer.vue'
 
-function errorReport() {
+const errorReport = () => {
   new Error(`Test error ${test}`)
 }
 
