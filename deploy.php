@@ -5,7 +5,6 @@ namespace Deployer;
 require 'recipe/laravel.php';
 require 'contrib/yarn.php';
 
-
 // Config
 
 set('repository', 'git@github.com:sald19/laravel-inertia.git');
@@ -20,7 +19,7 @@ host('157.245.255.11')
     ->set('deploy_path', '~/apps');
 
 task('yarn:build', function () {
-    run("cd {{release_path}} && {{bin/yarn}} build");
+    run('cd {{release_path}} && {{bin/yarn}} build');
 });
 
 after('deploy:shared', 'yarn:install');

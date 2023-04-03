@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
@@ -32,7 +32,7 @@ Route::get('/email', function () {
 
 Route::get('/search', function () {
     try {
-        $client = new MeiliSearch\Client("http://meilisearch:7700", "masterKey");
+        $client = new MeiliSearch\Client('http://meilisearch:7700', 'masterKey');
         $client->index('products')->updateFilterableAttributes(['team_id']);
 
         return \App\Models\Post::search('test')->where('user_id', 1)->get();

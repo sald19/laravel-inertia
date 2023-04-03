@@ -52,8 +52,10 @@ class SetupSearchFilters extends Command
             $this->warn(
                 string: $exception->getMessage(),
             );
+
             return self::FAILURE;
         }
+
         return 0;
     }
 }
