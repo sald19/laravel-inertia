@@ -1,9 +1,9 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
-import { useForm } from '@inertiajs/inertia-vue3'
+import { useForm } from '@inertiajs/vue3'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { array, object, string } from 'yup'
-import Tiptap from '@/Components/Tiptap.vue'
+// import Tiptap from '@/Components/Tiptap.vue'
 
 const schema = object({
   content: object({

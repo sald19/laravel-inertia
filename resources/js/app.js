@@ -3,8 +3,7 @@ import './icons'
 
 import { createApp, h } from 'vue'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import { createInertiaApp, usePage } from '@inertiajs/inertia-vue3'
-import { InertiaProgress } from '@inertiajs/progress'
+import { createInertiaApp, usePage } from '@inertiajs/vue3'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Bugsnag from '@bugsnag/js'
 import BugsnagPluginVue from '@bugsnag/plugin-vue'
@@ -17,7 +16,7 @@ Bugsnag.start({
   appVersion: import.meta.env.VITE_BUGSNAG_APP_VERSION,
   plugins: [new BugsnagPluginVue()],
   onError: (event) => {
-    const user = usePage().props.value.auth.user
+    const user = usePage().props.auth.user
     console.log('user', user)
     if (user) {
       event.setUser(user.id, user.email, user.name)
@@ -34,8 +33,8 @@ createInertiaApp({
       `./Pages/${name}.vue`,
       import.meta.glob('./Pages/**/*.vue')
     ),
-  setup({ el, app, props, plugin }) {
-    const vueApp = createApp({ render: () => h(app, props) })
+  setup({ el, App, props, plugin }) {
+    const vueApp = createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(bugsnagVue)
       .mixin({ methods: { route } })
@@ -44,6 +43,7 @@ createInertiaApp({
 
     return vueApp
   },
+  progress: {
+    color: '#29d',
+  },
 })
-
-InertiaProgress.init({ color: '#4B5563' })

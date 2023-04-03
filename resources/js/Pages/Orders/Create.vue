@@ -1,8 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { computed } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
-import { usePage } from '@inertiajs/inertia-vue3'
+import { router, usePage } from '@inertiajs/vue3'
 
 defineProps({ test: String })
 
@@ -17,12 +16,12 @@ const ASTROPAY_CONFIG = {
   onClose: (depositResult) => iframeClosed(depositResult),
 }
 
-const paymentId = computed(() => usePage().props.value.paymentId)
+const paymentId = computed(() => usePage().props.paymentId)
 
 const data = AstropaySDK.init(APP_ID, ASTROPAY_CONFIG)
 
 function sendData() {
-  const data = Inertia.visit('/orders', {
+  const data = router.visit('/orders', {
     method: 'post',
     preserveState: true,
   })
