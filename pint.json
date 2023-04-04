@@ -3,6 +3,14 @@
   "rules": {
     "no_unused_imports": true,
     "function_declaration": true,
-    "single_quote": true
+    "single_quote": true,
+    "blank_line_after_namespace": true,
+    "array_syntax": true,
+    "blank_line_after_opening_tag": true,
+    "combine_consecutive_issets": true,
+    "combine_consecutive_unsets": true,
+    "concat_space": true,
+    "declare_parentheses": true,
+    "declare_strict_types": true
   }
 }
