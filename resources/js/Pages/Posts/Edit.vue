@@ -18,13 +18,12 @@ const schema = object({
 })
 
 const form = useForm({
-  _method: 'put',
   content: props.post.content,
   title: props.post.title,
 })
 
 function submit(_, actions) {
-  form.post(`/posts/${props.post.id}`, {
+  form.put(`/posts/${props.post.id}`, {
     preserveScroll: true,
     onSuccess: () => form.reset(),
     onError: (errors) => {

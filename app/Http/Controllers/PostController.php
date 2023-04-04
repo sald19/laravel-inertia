@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
-use App\Models\CouponCodes;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -55,9 +54,9 @@ class PostController extends Controller
         return Inertia::render('Posts/Edit', ['post' => $post]);
     }
 
-    public function update(Post $post): RedirectResponse
+    public function update(Post $post, UpdatePostRequest $request): RedirectResponse
     {
-        dd($post->toArray());
+        $post->update($request->validated());
 
         return Redirect::route('posts.index')->with('success', 'Post Updated.');
     }
