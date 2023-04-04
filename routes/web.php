@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 /*
@@ -28,6 +29,16 @@ Route::get('/email', function () {
     $user = \Illuminate\Support\Facades\Auth::user();
 
     $user->notify(new InvoicePaid());
+});
+
+Route::get('/furulla', function () {
+    \DB::listen(function ($q) {
+        logger(Str::replaceArray('?', $q->bindings, $q->sql));
+    });
+
+    $users = User::with(['latestPost', 'posts'])->get();
+
+    dd($users->toArray());
 });
 
 Route::get('/search', function () {
