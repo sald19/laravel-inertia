@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\CouponCodes;
 use App\Models\Post;
@@ -37,23 +38,14 @@ class PostController extends Controller
         return Inertia::render('Posts/Show', ['post' => $post]);
     }
 
-    public function store(): RedirectResponse
+    public function store(StorePostRequest $request): RedirectResponse
     {
-        $validated = Request::validate([
-            'title' => ['required', 'min:8'],
-            'content' => ['required'],
-        ]);
-
         /** @var User $user */
         $user = Auth::user();
 
-        $user->posts()->create($validated);
+        logger(['$request->validated()' => $request->validated()]);
 
-        CouponCodes::create([
-            'code' => 'FURULLA',
-            'start_at' => '2022-09-12T16:58:27.000000Z',
-            'end_At' => null,
-        ]);
+        $user->posts()->create($request->validated());
 
         return Redirect::route('posts.index')->with('success', 'Post created.');
     }
@@ -63,8 +55,10 @@ class PostController extends Controller
         return Inertia::render('Posts/Edit', ['post' => $post]);
     }
 
-    public function update(): RedirectResponse
+    public function update(Post $post): RedirectResponse
     {
+        dd($post->toArray());
+
         return Redirect::route('posts.index')->with('success', 'Post Updated.');
     }
 }
