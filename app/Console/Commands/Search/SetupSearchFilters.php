@@ -43,7 +43,7 @@ class SetupSearchFilters extends Command
 
         try {
             $this->info(
-                string: "Updating filterable attributes for [$model] on index [$index]",
+                string: "Updating filterable attributes for [{$model}] on index [{$index}]",
             );
             $client->index(
                 uid: $index,
