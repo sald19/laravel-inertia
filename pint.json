@@ -1,3 +1,8 @@
 {
-  "preset": "laravel"
+  "preset": "laravel",
+  "rules": {
+    "no_unused_imports": true,
+    "function_declaration": true,
+    "single_quote": true
+  }
 }
