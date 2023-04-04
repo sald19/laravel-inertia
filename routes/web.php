@@ -73,7 +73,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::resource('posts', PostController::class)
-        ->only(['create', 'index', 'show', 'store']);
+        ->only(['create', 'index', 'show', 'store', 'edit', 'update']);
 
     Route::resource('orders', OrderController::class)
         ->only(['create', 'store']);

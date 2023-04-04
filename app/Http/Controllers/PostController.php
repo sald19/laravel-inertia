@@ -8,6 +8,7 @@ use App\Http\Resources\PostResource;
 use App\Models\CouponCodes;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
@@ -36,7 +37,7 @@ class PostController extends Controller
         return Inertia::render('Posts/Show', ['post' => $post]);
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $validated = Request::validate([
             'title' => ['required', 'min:8'],
@@ -55,5 +56,15 @@ class PostController extends Controller
         ]);
 
         return Redirect::route('posts.index')->with('success', 'Post created.');
+    }
+
+    public function edit(Post $post): Response
+    {
+        return Inertia::render('Posts/Edit', ['post' => $post]);
+    }
+
+    public function update(): RedirectResponse
+    {
+        return Redirect::route('posts.index')->with('success', 'Post Updated.');
     }
 }
