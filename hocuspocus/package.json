@@ -1,6 +1,10 @@
 {
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
   "dependencies": {
     "@hocuspocus/extension-database": "^2.0.3",
     "@hocuspocus/server": "^2.0.2",
