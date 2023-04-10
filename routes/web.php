@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -34,7 +35,7 @@ Route::get('/email', function () {
 });
 
 Route::get('/furulla', function () {
-    \DB::listen(function ($q) {
+    DB::listen(function ($q) {
         logger(Str::replaceArray('?', $q->bindings, $q->sql));
     });
 
