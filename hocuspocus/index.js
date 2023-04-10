@@ -1,13 +1,41 @@
 import express from 'express'
 import expressWebsockets from 'express-ws'
+import { TiptapTransformer } from '@hocuspocus/transformer'
 import { Server } from '@hocuspocus/server'
+import { Database } from '@hocuspocus/extension-database'
+import { PrismaClient } from '@prisma/client'
+
+import Highlight from '@tiptap/extension-highlight'
+import StarterKit from '@tiptap/starter-kit'
+
+const prisma = new PrismaClient()
 const hocuspocus = Server.configure({
-  async onConnect({ connection }) {
-    console.log('onConnect')
-  },
-  async onChange(data) {
-    console.log({ onChange: data })
-  },
+  extensions: [
+    new Database({
+      fetch: async ({ documentName, document }) => {
+        return new Promise((resolve, reject) => {
+          const id = 16
+          const post = prisma.posts
+            .findUnique({
+              where: {
+                id: parseInt(id),
+              },
+            })
+            .then((post) => {
+              console.log({ 'then-post': post })
+
+              const ydoc = TiptapTransformer.toYdoc(
+                post.content,
+                `document:${documentName}`,
+                [Highlight, StarterKit]
+              )
+
+              resolve(ydoc)
+            })
+        })
+      },
+    }),
+  ],
 })
 
 const { app } = expressWebsockets(express())
