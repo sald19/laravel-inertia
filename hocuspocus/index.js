@@ -8,6 +8,8 @@ import { PrismaClient } from '@prisma/client'
 import Highlight from '@tiptap/extension-highlight'
 import StarterKit from '@tiptap/starter-kit'
 
+import * as Y from 'yjs'
+
 const prisma = new PrismaClient()
 const hocuspocus = Server.configure({
   extensions: [
@@ -24,13 +26,13 @@ const hocuspocus = Server.configure({
             .then((post) => {
               console.log({ 'then-post': post })
 
-              const ydoc = TiptapTransformer.toYdoc(
-                post.content,
-                `document:${documentName}`,
-                [Highlight, StarterKit]
-              )
+              const ydoc = TiptapTransformer.toYdoc(post.content, `default`, [
+                Highlight,
+                StarterKit,
+              ])
 
-              resolve(ydoc)
+              const encoded = Y.encodeStateAsUpdate(ydoc)
+              resolve(encoded)
             })
         })
       },
