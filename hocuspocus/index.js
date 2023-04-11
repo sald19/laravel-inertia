@@ -14,10 +14,11 @@ const prisma = new PrismaClient()
 const hocuspocus = Server.configure({
   extensions: [
     new Database({
-      fetch: async ({ documentName, document }) => {
+      fetch: async ({ documentName }) => {
+        const [_, id] = documentName.split(':')
+
         return new Promise((resolve, reject) => {
-          const id = 16
-          const post = prisma.posts
+          prisma.posts
             .findUnique({
               where: {
                 id: parseInt(id),
