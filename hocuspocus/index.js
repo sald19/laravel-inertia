@@ -3,6 +3,7 @@ import expressWebsockets from 'express-ws'
 import { TiptapTransformer } from '@hocuspocus/transformer'
 import { Server } from '@hocuspocus/server'
 import { Database } from '@hocuspocus/extension-database'
+import { Logger } from '@hocuspocus/extension-logger'
 import { PrismaClient } from '@prisma/client'
 
 import Highlight from '@tiptap/extension-highlight'
@@ -13,6 +14,7 @@ import { encodeStateAsUpdate } from 'yjs'
 const prisma = new PrismaClient()
 const hocuspocus = Server.configure({
   extensions: [
+    new Logger(),
     new Database({
       fetch: async ({ documentName }) => {
         const [_, id] = documentName.split(':')

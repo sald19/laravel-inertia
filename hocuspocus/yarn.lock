@@ -23,6 +23,13 @@
   dependencies:
     "@hocuspocus/server" "^2.0.3"
 
+"@hocuspocus/extension-logger@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@hocuspocus/extension-logger/-/extension-logger-2.0.3.tgz#257f830df89068cb92cb5121170aa1b047104f2b"
+  integrity sha512-YEhup7bBbMDwj26oLOZnaIu0gOfqVPI1zKp9Kw+/6qfee4VHeA/2mpxLQS+OOfTtKry/7uIzqnnMdGbnZvBqwg==
+  dependencies:
+    "@hocuspocus/server" "^2.0.3"
+
 "@hocuspocus/server@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@hocuspocus/server/-/server-2.0.2.tgz#ef99515590e282035a568445e2304c20ef97add1"
