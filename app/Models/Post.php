@@ -32,8 +32,6 @@ class Post extends Model
     {
         return Attribute::make(
             get: function ($value) {
-                logger(['get-value' => $value, 'empty' => empty($value)]);
-
                 $value = $value ?? '{"document": "default-desde-el-set"}';
 
                 return json_decode($value);
