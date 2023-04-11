@@ -8,7 +8,7 @@ import { PrismaClient } from '@prisma/client'
 import Highlight from '@tiptap/extension-highlight'
 import StarterKit from '@tiptap/starter-kit'
 
-import * as Y from 'yjs'
+import { encodeStateAsUpdate } from 'yjs'
 
 const prisma = new PrismaClient()
 const hocuspocus = Server.configure({
@@ -24,14 +24,13 @@ const hocuspocus = Server.configure({
               },
             })
             .then((post) => {
-              console.log({ 'then-post': post })
-
               const ydoc = TiptapTransformer.toYdoc(post.content, `default`, [
                 Highlight,
                 StarterKit,
               ])
 
-              const encoded = Y.encodeStateAsUpdate(ydoc)
+              const encoded = encodeStateAsUpdate(ydoc)
+
               resolve(encoded)
             })
         })
@@ -47,8 +46,6 @@ app.get('/', (request, response) => {
 })
 
 app.ws('/collaboration/:document', (websocket, request) => {
-  console.log({ request: request.params })
-
   const context = {
     user: {
       id: 1234,
