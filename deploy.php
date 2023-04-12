@@ -31,7 +31,7 @@ after('deploy:shared', 'hocuspocus:install');
 
 task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus');
-    run('yarn:istall');
+    run('{{bin/yarn}} build');
 });
 
 
