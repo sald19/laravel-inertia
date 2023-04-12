@@ -5,7 +5,7 @@ import server from './server/index.js'
 
 const { app } = expressWebsockets(express())
 
-app.get('/', (request, response) => {
+app.get('/', (response) => {
   response.send('Hello World!')
 })
 
