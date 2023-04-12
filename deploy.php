@@ -27,6 +27,14 @@ task('yarn:build', function () {
 after('deploy:shared', 'yarn:install');
 after('yarn:install', 'yarn:build');
 
+after('deploy:shared', 'hocuspocus:install');
+
+task('hocuspocus:install', function () {
+    run('cd {{release_path}}/hocuspocus');
+    run('yarn:istall');
+});
+
+
 // Hooks
 
 after('deploy:failed', 'deploy:unlock');
