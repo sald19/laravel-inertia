@@ -31,7 +31,11 @@ after('deploy:shared', 'hocuspocus:install');
 
 task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
+
+    run('echo $USER');
 });
+
+
 
 // Hooks
 after('deploy:failed', 'deploy:unlock');
