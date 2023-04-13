@@ -27,9 +27,6 @@ task('yarn:build', function () {
 after('deploy:shared', 'yarn:install');
 after('yarn:install', 'yarn:build');
 
-after('deploy:shared', 'hocuspocus:install');
-after('hocuspocus:install', 'hocuspocus:restart');
-
 task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
 
@@ -38,7 +35,6 @@ task('hocuspocus:install', function () {
     run('echo $USER');
 });
 
-
 task('hocuspocus:restart', function () {
     $sudo = get('writable_use_sudo') ? 'sudo' : '';
 
@@ -46,6 +42,8 @@ task('hocuspocus:restart', function () {
 });
 
 
+after('deploy:shared', 'hocuspocus:install');
+after('hocuspocus:install', 'hocuspocus:restart');
 
 // Hooks
 after('deploy:failed', 'deploy:unlock');
