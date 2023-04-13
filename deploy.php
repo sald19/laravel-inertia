@@ -34,12 +34,12 @@ task('hocuspocus:install', function () {
 task('hocuspocus:restart', function () {
     $sudo = get('writable_use_sudo');
 
-    run("$sudo");
+    run('$sudo');
 });
 
 
 after('deploy:shared', 'hocuspocus:install');
-after('hocuspocus:install', 'hocuspocus:restart');
+// after('hocuspocus:install', 'hocuspocus:restart');
 
 // Hooks
 after('deploy:failed', 'deploy:unlock');
