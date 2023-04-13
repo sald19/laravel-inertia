@@ -5,10 +5,6 @@ import server from './server/index.js'
 
 const { app } = expressWebsockets(express())
 
-app.get('/', (response) => {
-  response.send('Hello World!')
-})
-
 app.ws('/collaboration/:document', (websocket, request) => {
   const context = {
     user: {
