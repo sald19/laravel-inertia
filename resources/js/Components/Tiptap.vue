@@ -38,7 +38,7 @@ const randomColor = computed(() => {
 })
 
 const provider = new HocuspocusProvider({
-  url: `ws://localhost:1234/collaboration/16`,
+  url: `ws://157.245.255.11:1234/collaboration/16`,
   name: `document:${props.document}`,
   document: ydoc,
 })
