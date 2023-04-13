@@ -31,15 +31,7 @@ task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
 });
 
-task('hocuspocus:restart', function () {
-    $sudo = get('writable_use_sudo');
-
-    run('$sudo');
-});
-
-
 after('deploy:shared', 'hocuspocus:install');
-// after('hocuspocus:install', 'hocuspocus:restart');
 
 // Hooks
 after('deploy:failed', 'deploy:unlock');
