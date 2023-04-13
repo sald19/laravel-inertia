@@ -32,6 +32,8 @@ after('deploy:shared', 'hocuspocus:install');
 task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
 
+    set('remote_user', 'root');
+
     run('echo $USER');
 });
 
