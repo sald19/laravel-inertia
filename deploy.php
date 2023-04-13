@@ -33,7 +33,5 @@ task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
 });
 
-
 // Hooks
-
 after('deploy:failed', 'deploy:unlock');
