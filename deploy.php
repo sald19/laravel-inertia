@@ -29,10 +29,6 @@ after('yarn:install', 'yarn:build');
 
 task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
-
-    set('remote_user', 'root');
-
-    run('echo $USER');
 });
 
 task('hocuspocus:restart', function () {
