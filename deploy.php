@@ -36,7 +36,7 @@ task('hocuspocus:install', function () {
 });
 
 task('hocuspocus:restart', function () {
-    $sudo = get('writable_use_sudo') ? 'sudo' : '';
+    $sudo = get('writable_use_sudo');
 
     run("$sudo");
 });
