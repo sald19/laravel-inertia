@@ -12,7 +12,6 @@ model posts {
   title      String    @db.VarChar(255)
   content    Json
   user_id    BigInt    @db.UnsignedBigInt
-  settings   Json?
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
   deleted_at DateTime? @db.Timestamp(0)
