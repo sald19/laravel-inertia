@@ -31,6 +31,10 @@ task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
 });
 
+task('prisma:generate', function () {
+    run('cd {{release_path}}/hocuspocus && {{bin/npx}} prisma generate');
+});
+
 after('deploy:shared', 'hocuspocus:install');
 
 // Hooks
