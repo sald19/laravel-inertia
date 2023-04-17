@@ -31,7 +31,7 @@ task('hocuspocus:install', function () {
     run('cd {{release_path}}/hocuspocus && {{bin/yarn}} install');
 });
 
-set('shared_files', ['.env', '.env_hocuspocus']);
+set('shared_files', ['.env', 'hocuspocus/.env']);
 
 task('prisma:generate', function () {
     run('cd {{release_path}}/hocuspocus && npx prisma generate');
