@@ -37,8 +37,13 @@ task('prisma:generate', function () {
     run('cd {{release_path}}/hocuspocus && npx prisma generate');
 });
 
+task('supervisor:restart', function () {
+    run('sudo service supervisord restart');
+})->desc('Restart supervisord restart');
+
 after('deploy:shared', 'hocuspocus:install');
 after('hocuspocus:install', 'prisma:generate');
+after('prisma:generate', 'supervisor:restart');
 
 // Hooks
 after('deploy:failed', 'deploy:unlock');
