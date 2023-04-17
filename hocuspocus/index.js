@@ -6,7 +6,7 @@ import server from './server/index.js'
 const { app } = expressWebsockets(express())
 
 app.get('/', (request, response) => {
-  response.send('Hello World!')
+  response.send('Hello World!!')
 })
 
 app.ws('/collaboration/:document', (websocket, request) => {
