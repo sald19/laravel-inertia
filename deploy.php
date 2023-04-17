@@ -38,7 +38,7 @@ task('prisma:generate', function () {
 });
 
 task('supervisor:restart', function () {
-    run('sudo supervisorctl status');
+    run('sudo -s supervisorctl status');
 })->desc('Restart supervisord restart');
 
 after('deploy:shared', 'hocuspocus:install');
