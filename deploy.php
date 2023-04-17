@@ -36,6 +36,7 @@ task('prisma:generate', function () {
 });
 
 after('deploy:shared', 'hocuspocus:install');
+after('hocuspocus:install', 'prisma:generate');
 
 // Hooks
 after('deploy:failed', 'deploy:unlock');
