@@ -32,7 +32,7 @@ task('hocuspocus:install', function () {
 });
 
 task('prisma:generate', function () {
-    run('cd {{release_path}}/hocuspocus && prisma generate');
+    run('cd {{release_path}}/hocuspocus && npx prisma generate');
 });
 
 after('deploy:shared', 'hocuspocus:install');
