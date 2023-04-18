@@ -53,8 +53,6 @@ const collaborationExtensions = computed(() => {
     : []
 })
 
-console.log({ docuemnt: props.document })
-
 const randomColor = computed(() => {
   return colors[Math.floor(Math.random() * colors.length)]
 })
