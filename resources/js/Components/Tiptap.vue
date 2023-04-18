@@ -20,6 +20,8 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['update:modelValue'])
+
 const ydoc = new Y.Doc()
 const colors = [
   '#958DF1',
@@ -44,6 +46,7 @@ const provider = new HocuspocusProvider({
 })
 
 const editor = useEditor({
+  content: props.modelValue,
   editorProps: {
     attributes: {
       class:
@@ -65,6 +68,9 @@ const editor = useEditor({
       },
     }),
   ],
+  onUpdate: ({ editor }) => {
+    emit('update:modelValue', editor.getJSON())
+  },
 })
 </script>
 
