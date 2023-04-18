@@ -35,6 +35,26 @@ const colors = [
 
 const user = computed(() => usePage().props.auth.user)
 
+const collaborationExtensions = computed(() => {
+  return props.document
+    ? [
+        Collaboration.configure({
+          document: ydoc,
+        }),
+        CollaborationCursor.configure({
+          provider,
+          user: {
+            id: user.value.id,
+            name: user.value.name,
+            color: randomColor.value,
+          },
+        }),
+      ]
+    : []
+})
+
+console.log({ docuemnt: props.document })
+
 const randomColor = computed(() => {
   return colors[Math.floor(Math.random() * colors.length)]
 })
@@ -46,7 +66,7 @@ const provider = new HocuspocusProvider({
 })
 
 const editor = useEditor({
-  content: props.modelValue,
+  content: props.document ? '' : props.modelValue,
   editorProps: {
     attributes: {
       class:
@@ -56,17 +76,7 @@ const editor = useEditor({
   extensions: [
     Highlight,
     StarterKit.configure({ history: false }),
-    Collaboration.configure({
-      document: ydoc,
-    }),
-    CollaborationCursor.configure({
-      provider,
-      user: {
-        id: user.value.id,
-        name: user.value.name,
-        color: randomColor.value,
-      },
-    }),
+    ...collaborationExtensions.value,
   ],
   onUpdate: ({ editor }) => {
     emit('update:modelValue', editor.getJSON())
