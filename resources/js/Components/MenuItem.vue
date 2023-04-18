@@ -16,7 +16,7 @@ defineProps({
       `w-8 h-8 text-gray-800 rounded fill-current items-center p-2`,
     ]"
     :title="title"
-    @click="action"
+    @click.prevent="action"
   >
     <font-awesome-icon :icon="['fa-solid', icon]" />
   </button>
