@@ -9,7 +9,7 @@ app.get('/', (request, response) => {
   response.send('Hello World!!')
 })
 
-app.ws('/collaboration/:document', (websocket, request) => {
+app.ws('/collaboration', (websocket, request) => {
   const context = {
     user: {
       id: 1234,
