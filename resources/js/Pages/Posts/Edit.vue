@@ -1,9 +1,12 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue'
-import { useForm } from '@inertiajs/vue3'
-import { Form, Field, ErrorMessage } from 'vee-validate'
 import { array, object, string } from 'yup'
+import { Form, Field, ErrorMessage } from 'vee-validate'
+import { ref } from 'vue'
+import { useForm } from '@inertiajs/vue3'
+
+import AppLayout from '@/Layouts/AppLayout.vue'
 import Tiptap from '@/Components/Tiptap.vue'
+import TiptapRenderer from '@/Components/TiptapRenderer.vue'
 
 const props = defineProps({
   post: Object,
@@ -16,6 +19,8 @@ const schema = object({
   }),
   title: string().required().min(3),
 })
+
+const editMode = ref(true)
 
 const form = useForm({
   content: props.post.content,
@@ -86,7 +91,13 @@ function submit(_, actions) {
                     Content
                   </label>
                   <Field v-slot="{ errorMessage }" name="content">
+                    <TiptapRenderer
+                      v-if="editMode"
+                      :content="post.content"
+                      @click="editMode = false"
+                    />
                     <Tiptap
+                      v-else
                       v-model="form.content"
                       :document="post.id"
                       :class="[
