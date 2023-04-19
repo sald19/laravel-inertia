@@ -5,10 +5,6 @@ import { formatDistanceToNow, isToday, format } from 'date-fns'
 
 import TiptapRenderer from '@/Components/TiptapRenderer.vue'
 
-const errorReport = () => {
-  new Error(`Test error ${test}`)
-}
-
 const props = defineProps({
   post: Object,
 })
@@ -39,7 +35,6 @@ const humaneDate = computed(() => {
         >
           {{ post.title }}
         </div>
-        <button @click="errorReport">click</button>
 
         <div class="mt-1 font-medium text-sm text-slate-500">
           {{ humaneDate }} · 4 min read
