@@ -37,7 +37,7 @@ function submit(_, actions) {
   <AppLayout title="Create Post">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Create Post
+        Edit Post
       </h2>
     </template>
 
