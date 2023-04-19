@@ -39,7 +39,7 @@ function submit(_, actions) {
 </script>
 
 <template>
-  <AppLayout title="Create Post">
+  <AppLayout title="Edit Post">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         Edit Post
