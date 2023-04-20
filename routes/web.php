@@ -7,9 +7,8 @@ use App\Http\Controllers\PostController;
 use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 /*
@@ -35,13 +34,13 @@ Route::get('/email', function () {
 });
 
 Route::get('/furulla', function () {
-    DB::listen(function ($q) {
-        logger(Str::replaceArray('?', $q->bindings, $q->sql));
+    // Equivalent to the following, introduced in Laravel 10.7
+    $pipe = Process::pipe(function ($pipe) {
+        $pipe->command('cat test.txt');
+        $pipe->command('grep -i "foo"');
     });
 
-    $users = User::with(['latestPost', 'posts'])->get();
-
-    dd($users->toArray());
+    $pipe->run()->output();
 });
 
 Route::get('/search', function () {
@@ -73,8 +72,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('posts', PostController::class)
-        ->only(['create', 'index', 'show', 'store', 'edit', 'update']);
+    Route::resource('posts', PostController::class)->except(['destroy']);
 
     Route::resource('orders', OrderController::class)
         ->only(['create', 'store']);
