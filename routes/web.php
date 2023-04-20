@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
+use Illuminate\Process\Pipe;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,12 +36,12 @@ Route::get('/email', function () {
 
 Route::get('/furulla', function () {
     // Equivalent to the following, introduced in Laravel 10.7
-    $pipe = Process::pipe(function ($pipe) {
-        $pipe->command('cat test.txt');
-        $pipe->command('grep -i "foo"');
+    $pipe = Process::pipe(function (Pipe $pipe) {
+        $pipe->command('ls -la');
+        // $pipe->command('grep -i "foo"');
     });
 
-    $pipe->run()->output();
+    // dd($pipe->output());
 });
 
 Route::get('/search', function () {
