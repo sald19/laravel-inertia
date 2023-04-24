@@ -10,14 +10,7 @@ app.get('/', (request, response) => {
 })
 
 app.ws('/collaboration', (websocket, request) => {
-  const context = {
-    user: {
-      id: 1234,
-      name: 'Jane',
-    },
-  }
-
-  server.handleConnection(websocket, request, request.params.document, context)
+  server.handleConnection(websocket, request, request.params.document)
 })
 
 app.listen(6001, () => console.log('Listening on http://127.0.0.1:6001'))
