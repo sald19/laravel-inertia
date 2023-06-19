@@ -19,11 +19,13 @@ const form = useForm({
 })
 
 function submit(_, actions) {
+  console.log(actions)
   form.post('/posts', {
     preserveScroll: true,
     onSuccess: () => form.reset(),
     onError: (errors) => {
-      actions.setErrors(errors)
+      form.reset('title')
+      // actions.setErrors(errors)
     },
   })
 }

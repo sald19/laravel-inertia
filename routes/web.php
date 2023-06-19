@@ -55,6 +55,15 @@ Route::get('/search', function () {
     }
 });
 
+Route::domain('{account}.laravel-inertia.test')->group(function ($account) {
+    Route::get('/', function ($account) {
+        dd([
+            '$account' => $account,
+        ]);
+    });
+});
+
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
