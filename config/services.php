@@ -33,4 +33,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'twitter' => [
+        'url' => env('TWITTER_API_URL', 'https://api.twitter.com/2'),
+        'api_key' => env('TWITTER_API_KEY'),
+        'secret_key' => env('TWITTER_SECRET_KEY'),
+        'access_token' => env('TWITTER_ACCESS_TOKEN'),
+        'token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
+    ],
 ];
