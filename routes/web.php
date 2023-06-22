@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TwitterController;
 use App\Models\User;
 use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Application;
@@ -86,4 +87,11 @@ Route::middleware([
 
     Route::resource('orders', OrderController::class)
         ->only(['create', 'store']);
+
+    Route::controller(TwitterController::class)->prefix('twitter')->name('twitter.')->group(function () {
+        Route::get('authorize', 'handleAuthorization')->name('authorize');
+        Route::get('callback', 'handleCallback')->name('callback');
+
+        Route::get('tweet', 'tweet')->name('tweet');
+    });
 });
