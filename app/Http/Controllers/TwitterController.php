@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Integrations\Twitter\Requests\CreateTweetRequest;
 use App\Http\Integrations\Twitter\Requests\CurrentUserInfoRequest;
 use App\Http\Integrations\Twitter\TwitterConnector;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,12 +51,9 @@ class TwitterController extends Controller
         $user->twitter_auth = serialize($authorization);
         $user->save();
 
-
         $connector->authenticate($authorization);
 
         $response = $connector->send(new CurrentUserInfoRequest());
-
-
 
         dd([
             'response' => $response->collect(),
@@ -75,6 +73,7 @@ class TwitterController extends Controller
 
     public function tweet()
     {
+        /** @var User $user */
         $user = Auth::user();
         $token = unserialize($user->twitter_auth);
 
